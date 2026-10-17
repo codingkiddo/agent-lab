@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: agent-lab-postgres
+    environment:
+      POSTGRES_DB: agentlab
+      POSTGRES_USER: agent
+      POSTGRES_PASSWORD: agent
+    ports:
+      - "5433:5432"     # 5433 on your machine, in case you already run Postgres on 5432
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
