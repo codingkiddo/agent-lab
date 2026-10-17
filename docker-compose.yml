@@ -1,4 +1,10 @@
 services:
+  redis:
+    image: redis/redis-stack:latest
+    container_name: agent-lab-redis
+    ports:
+      - "6379:6379"    # Redis itself
+      - "8001:8001"    # RedisInsight: a web UI to look inside Redis
   postgres:
     image: postgres:16
     container_name: agent-lab-postgres
